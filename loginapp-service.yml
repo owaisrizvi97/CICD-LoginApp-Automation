@@ -9,7 +9,7 @@ spec:
     app: loginapp #selector used to differentiate amongst Pods run inside cluster
 
   ports:
-    - port: 8080 # loadbalancer port for external traffic
+    - port: 8080 # loadbalancer port for traffic
       targetPort: 8080 #container port where pod of the app is listening
 
   type: LoadBalancer
