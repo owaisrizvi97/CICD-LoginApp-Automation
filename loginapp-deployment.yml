@@ -1,0 +1,29 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: loginapp-deployment
+  labels: 
+     app: loginapp
+
+spec:
+  replicas: 3 
+  selector:
+    matchLabels:
+      app: loginapp
+
+  template:
+    metadata:
+      labels:
+        app: loginapp
+    spec:
+      containers:
+      - name: loginapp
+        image: owaisrizvi97/loginapp
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
