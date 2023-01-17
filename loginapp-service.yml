@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: loginapp-service
+  labels:
+    app: loginapp 
+spec:
+  selector:
+    app: loginapp #selector used to differentiate amongst Pods run inside cluster
+
+  ports:
+    - port: 8080 # loadbalancer port for external traffic
+      targetPort: 8080 #container port where pod of the app is listening
+
+  type: LoadBalancer
